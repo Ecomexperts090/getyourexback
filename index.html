@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relationship & Personality Mastery | Recover & Rebuild</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-gold: #996515;
+            --bg-black: #0a0a0a;
+            --card-brown: #1a1412;
+            --text-light: #f4f4f4;
+            --text-dim: #b3b3b3;
+            --accent-glow: rgba(212, 175, 55, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animations */
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 var(--accent-glow); }
+            70% { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-up { animation: slideUp 0.8s ease forwards; }
+
+        /* Utility Classes */
+        .container { width: 90%; max-width: 600px; margin: 0 auto; }
+        .text-center { text-align: center; }
+        .gold-text { color: var(--primary-gold); }
+        .highlight { background: linear-gradient(90deg, transparent, var(--dark-gold), transparent); padding: 2px 10px; }
+
+        /* Offer Strip */
+        .offer-strip {
+            background: linear-gradient(90deg, #5c4033, #2b1d16);
+            color: var(--primary-gold);
+            padding: 10px 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--primary-gold);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 40px;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.7), var(--bg-black)), 
+                        url('https://images.unsplash.com/photo-1518104593124-ac2e82a5eb9d?auto=format&fit=crop&q=80&w=1000') no-repeat center center/cover;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        /* Images Grid */
+        .image-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .image-card {
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(40%) contrast(110%);
+            transition: var(--transition);
+        }
+
+        .image-card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* Pain Points */
+        .pain-section {
+            padding: 50px 0;
+            background-color: var(--card-brown);
+            border-radius: 30px 30px 0 0;
+        }
+
+        .pain-item {
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--dark-gold);
+        }
+
+        /* Benefits */
+        .benefits-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+
+        .benefit-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary-gold);
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* CTA Buttons */
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            animation: pulse-glow 2s infinite;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+
+        .cta-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Pricing Section */
+        .pricing-card {
+            background: linear-gradient(180deg, #1e1e1e 0%, #000 100%);
+            border: 2px solid var(--primary-gold);
+            padding: 40px 20px;
+            border-radius: 20px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .price-tag {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+            margin: 10px 0;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        /* Trust Boxes */
+        .trust-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 40px;
+            padding-bottom: 100px;
+        }
+
+        .trust-box {
+            display: flex;
+            align-items: center;
+            background: #111;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #222;
+        }
+
+        .trust-box span {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .trust-icon {
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Sticky Bottom */
+        .sticky-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-top: 1px solid var(--dark-gold);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sticky-bottom .cta-btn {
+            margin: 0;
+            padding: 12px 30px;
+            font-size: 1rem;
+        }
+
+        /* Timer */
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .timer-unit {
+            background: #222;
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 60px;
+        }
+
+        .timer-val {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+        }
+
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 768px) {
+            .image-showcase { grid-template-columns: 1fr 1fr 1fr 1fr; }
+            .hero h1 { font-size: 3.5rem; }
+            .trust-container { grid-template-columns: 1fr 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Limited Offer Strip -->
+    <div class="offer-strip text-center">
+        ⚡ सीमित समय के लिए विशेष ऑफर: केवल आज के लिए ₹199
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container text-center">
+            <h1 class="animate-up">क्या आपका प्यार आपको <span class="gold-text">अधूरा छोड़ गया?</span></h1>
+            <p class="animate-up">खोया हुआ सम्मान और पुराना रिश्ता वापस पाने का एकमात्र मनोवैज्ञानिक तरीका। खुद को बदलें, दुनिया बदलेगी।</p>
+            <div class="timer animate-up">
+                <div class="timer-unit"><span class="timer-val" id="min">14</span><span class="timer-label">Min</span></div>
+                <div class="timer-unit"><span class="timer-val" id="sec">59</span><span class="timer-label">Sec</span></div>
+            </div>
+            <a href="#payment" class="cta-btn animate-up">अभी एक्सेस प्राप्त करें</a>
+        </div>
+    </section>
+
+    <!-- Emotional Imagery -->
+    <div class="container">
+        <div class="image-showcase">
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?auto=format&fit=crop&q=80&w=500" alt="Heartbreak">
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1516534775068-ba3e84529ec1?auto=format&fit=crop&q=80&w=500" alt="Loneliness">
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=500" alt="Growth">
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=500" alt="Success">
+            </div>
+        </div>
+    </div>
+
+    <!-- Pain Points Section -->
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 30px;">हमें पता है आप <span class="gold-text">किस दौर से</span> गुजर रहे हैं...</h2>
+            
+            <div class="pain-item">
+                <p>💔 <strong>उपेक्षा का दर्द:</strong> जब वही इंसान आपको इग्नोर करता है जिसे आप अपनी दुनिया मानते थे।</p>
+            </div>
+            <div class="pain-item">
+                <p>😔 <strong>आत्म-सम्मान की कमी:</strong> बार-बार मिन्नतें करने के बाद भी जब आपको ठुकरा दिया गया।</p>
+            </div>
+            <div class="pain-item">
+                <p>🔄 <strong>पुरानी यादों का चक्र:</strong> हर रात वही सवाल - "मुझसे क्या गलती हुई?"</p>
+            </div>
+
+            <a href="#payment" class="cta-btn">अपनी वैल्यू दोबारा बढ़ाएं</a>
+        </div>
+    </section>
+
+    <!-- Middle Offer Strip -->
+    <div class="offer-strip text-center" style="margin: 40px 0;">
+        🎁 बोनस: 15 मिनट की 'Instant Confidence' गाइड बिल्कुल मुफ्त!
+    </div>
+
+    <!-- Benefits Section -->
+    <section class="benefits" style="padding: 40px 0;">
+        <div class="container">
+            <h2 class="text-center">इस प्रोग्राम से <span class="gold-text">आप क्या सीखेंगे?</span></h2>
+            <ul class="benefits-list">
+                <li class="benefit-item">
+                    <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                    <span><strong>No Contact Rule:</strong> उसे आपकी कमी महसूस कराने की सही तकनीक।</span>
+                </li>
+                <li class="benefit-item">
+                    <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                    <span><strong>Emotional Intelligence:</strong> अपनी भावनाओं पर काबू पाना और आकर्षक व्यक्तित्व बनाना।</span>
+                </li>
+                <li class="benefit-item">
+                    <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                    <span><strong>Rebound Protection:</strong> गलत रिश्तों में दोबारा गिरने से बचने के मनोवैज्ञानिक तरीके।</span>
+                </li>
+                <li class="benefit-item">
+                    <svg viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                    <span><strong>Magnet Personality:</strong> खुद को ऐसा बनाएं कि लोग आपकी ओर खिंचे चले आएं।</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="payment" class="container">
+        <div class="pricing-card text-center">
+            <span class="highlight">विशेष सीमित समय ऑफर</span>
+            <h3 style="margin-top: 20px;">Relationship Mastery Guide</h3>
+            <p class="original-price">मूल्य: ₹1,999</p>
+            <div class="price-tag">₹199</div>
+            <p style="margin-bottom: 25px;">एक बार का निवेश - जीवन भर का बदलाव</p>
+            <button class="cta-btn" onclick="handlePurchase()">अभी डाउनलोड करें - ₹199</button>
+            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">🔒 सुरक्षित पेमेंट गेटवे</p>
+        </div>
+    </section>
+
+    <!-- Bottom Offer Strip -->
+    <div class="offer-strip text-center">
+        ⚠️ यह ऑफर अगले 15 मिनट में समाप्त हो जाएगा!
+    </div>
+
+    <!-- Trust Boxes -->
+    <section class="container">
+        <div class="trust-container">
+            <div class="trust-box">
+                <div class="trust-icon">📧</div>
+                <span>इंस्टेंट ईमेल डिलीवरी (Pay & Get)</span>
+            </div>
+            <div class="trust-box">
+                <div class="trust-icon">🛡️</div>
+                <span>100% सुरक्षित और निजी पेमेंट</span>
+            </div>
+            <div class="trust-box">
+                <div class="trust-icon">♾️</div>
+                <span>लाइफटाइम एक्सेस और अपडेट्स</span>
+            </div>
+        </div>
+        
+        <p class="text-center" style="font-size: 0.8rem; color: #555; margin-bottom: 40px;">
+            © 2024 Personality Mastery. All Rights Reserved. <br>
+            हम आपकी निजता (Privacy) का सम्मान करते हैं।
+        </p>
+    </section>
+
+    <!-- Sticky Bottom Button -->
+    <div class="sticky-bottom" id="stickyCta">
+        <a href="#payment" class="cta-btn">अभी प्राप्त करें - ₹199</a>
+    </div>
+
+    <script>
+        // Smooth Scrolling for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Countdown Timer Logic
+        function startTimer(duration, minDisplay, secDisplay) {
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                minDisplay.textContent = minutes;
+                secDisplay.textContent = seconds;
+
+                if (--timer < 0) {
+                    timer = duration; // Reset for demo purposes
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const fifteenMinutes = 60 * 15;
+            const m = document.querySelector('#min');
+            const s = document.querySelector('#sec');
+            startTimer(fifteenMinutes, m, s);
+        };
+
+        // Scroll reveal animation simple implementation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.pain-item, .benefit-item, .pricing-card').forEach(el => {
+            el.style.opacity = "0";
+            observer.observe(el);
+        });
+
+        // CTA Click Handler
+        function handlePurchase() {
+            // Placeholder for Payment Gateway Integration
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: var(--primary-gold);
+                color: #000;
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 1000;
+                font-weight: bold;
+                text-align: center;
+                box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            `;
+            message.innerHTML = "पेमेंट गेटवे पर रीडायरेक्ट हो रहा है...<br>कृपया प्रतीक्षा करें।";
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+                // window.location.href = "YOUR_PAYMENT_LINK_HERE";
+            }, 2000);
+        }
+
+        // Hide sticky CTA when payment section is in view
+        const paymentSection = document.querySelector('#payment');
+        const stickyCta = document.querySelector('#stickyCta');
+
+        window.addEventListener('scroll', () => {
+            const rect = paymentSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                stickyCta.style.display = 'none';
+            } else {
+                stickyCta.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
